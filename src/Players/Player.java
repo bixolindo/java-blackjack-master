@@ -70,19 +70,16 @@ public class Player extends BlackjackPlayer implements Serializable
      *
      * @return Whether or not the bet was valid.
      */
-    public boolean setBet(double bet)
-    {
-        boolean betMade = false;
-        
+    public boolean setBet(double bet){        
         if (bet <= (getWallet() + getBet()))
         {
             this.wallet += this.bet; // reset old bet
             this.bet = bet; // set new bet
             this.wallet -= bet; // update wallet
-            betMade = true;
+            return true;
         }
         
-        return betMade;
+        return false;
     }
     
     /**
