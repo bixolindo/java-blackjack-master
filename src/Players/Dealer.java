@@ -213,20 +213,7 @@ public class Dealer extends BlackjackPlayer
         
         if (!hand.hasBlackjack())
         {
-            while (hand.getTotal() < DEALER_STANDS_ON)
-            {
-                hand.add(deck.deal());
-                say(this.getName() + " hits.");
-            }
-            
-            if (hand.isBust())
-            {
-                say(this.getName() + " is BUST");
-            }
-            else
-            {
-                say(this.getName() + " stands on " + hand.getTotal());
-            }            
+            keepPlaying();
         }
         else
         {
@@ -271,6 +258,21 @@ public class Dealer extends BlackjackPlayer
         }
         
         gameOver = true;
+    }
+
+    private void keepPlaying(){
+        while (hand.getTotal() < DEALER_STANDS_ON){
+            hand.add(deck.deal());
+            say(this.getName() + " hits.");
+        }
+        if (hand.isBust())
+        {
+            say(this.getName() + " is BUST");
+        }
+        else
+        {
+            say(this.getName() + " stands on " + hand.getTotal());
+        }   
     }
     
     public int cardsLeftInPack()
