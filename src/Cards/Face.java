@@ -139,12 +139,9 @@ public class Face
     
     public void switchAce()
     {
-        if (isAce())
+        if (isAce() && getValue() == HIGH_ACE)
         {
-            if (getValue() == HIGH_ACE)
-            {
-                setValue(LOW_ACE);
-            }
+            setValue(LOW_ACE);
         }
     }
     
