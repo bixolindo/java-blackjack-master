@@ -129,12 +129,12 @@ public class Face
     
     public boolean isAce()
     {
-        return (name.equals("Ace")) ? true : false;
+        return (name.equals("Ace"));
     }
     
     public boolean isLowAce()
     {
-        return (name.equals("Ace") && getValue() == LOW_ACE) ? true : false;
+        return (name.equals("Ace") && getValue() == LOW_ACE);
     }
     
     public void switchAce()

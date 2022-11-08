@@ -50,7 +50,7 @@ public abstract class CardHand extends Vector<Card>
      */
     public boolean isBust()
     {
-        return (getTotal() > 21) ? true : false;
+        return getTotal() > 21;
     }
     
     /**
@@ -61,7 +61,7 @@ public abstract class CardHand extends Vector<Card>
      */
     public boolean hasBlackjack()
     {
-        return (getTotal() == 21 && this.size() == 2) ? true : false;
+        return getTotal() == 21 && this.size() == 2;
     }
     
     /**
