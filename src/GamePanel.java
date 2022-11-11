@@ -113,7 +113,7 @@ public class GamePanel extends JPanel implements ActionListener {
 			playDouble();
 		} else if (act.equals("Stand")) {
 			stand();
-		} else if (act.equals("1") || act.equals("5") || act.equals("10") || act.equals("25") || act.equals("100")) {
+		} else if (isBetEvent(act)) {
 			increaseBet(Integer.parseInt(act));
 		} else if (act.equals("Clear")) {
 			System.out.println("clear bet");
@@ -121,6 +121,10 @@ public class GamePanel extends JPanel implements ActionListener {
 		}
 
 		updateValues();
+	}
+
+	public boolean isBetEvent(String act) {
+		return act.equals("1") || act.equals("5") || act.equals("10") || act.equals("25") || act.equals("100");
 	}
 
 	public void newGame() {

@@ -83,7 +83,7 @@ public class Dealer extends BlackjackPlayer {
             say("Please place your bet.");
         }
         
-        return betSet
+        return betSet;
     }
 
 	/**
