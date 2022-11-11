@@ -82,31 +82,18 @@ public class AppWindow extends JFrame implements ActionListener, ComponentListen
 		setJMenuBar(menuBar);
 
 		// keyboard shortcuts
-
-		updatePlayerDetails.setAccelerator(KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U,
-				Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
-		savePlayer.setAccelerator(KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S,
-				Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
-		openPlayer.setAccelerator(KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O,
-				Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
-		dealAction.setAccelerator(KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N,
-				Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
-		hitAction.setAccelerator(KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C,
-				Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
-		doubleAction.setAccelerator(KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_D,
-				Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
-		standAction.setAccelerator(KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F,
-				Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
-		oneChip.setAccelerator(KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_1,
-				Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
-		fiveChip.setAccelerator(KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_2,
-				Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
-		tenChip.setAccelerator(KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_3,
-				Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
-		twentyFiveChip.setAccelerator(KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_4,
-				Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
-		hundredChip.setAccelerator(KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_5,
-				Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
+		updatePlayerDetails.setAccelerator(createShortCut(java.awt.event.KeyEvent.VK_U));
+		savePlayer.setAccelerator(createShortCut(java.awt.event.KeyEvent.VK_S));
+		openPlayer.setAccelerator(createShortCut(java.awt.event.KeyEvent.VK_O));
+		dealAction.setAccelerator(createShortCut(java.awt.event.KeyEvent.VK_N));
+		hitAction.setAccelerator(createShortCut(java.awt.event.KeyEvent.VK_C));
+		doubleAction.setAccelerator(createShortCut(java.awt.event.KeyEvent.VK_D));
+		standAction.setAccelerator(createShortCut(java.awt.event.KeyEvent.VK_F));
+		oneChip.setAccelerator(createShortCut(java.awt.event.KeyEvent.VK_1));
+		fiveChip.setAccelerator(createShortCut(java.awt.event.KeyEvent.VK_2));
+		tenChip.setAccelerator(createShortCut(java.awt.event.KeyEvent.VK_3));
+		twentyFiveChip.setAccelerator(createShortCut(java.awt.event.KeyEvent.VK_4));
+		hundredChip.setAccelerator(createShortCut(java.awt.event.KeyEvent.VK_5));
 
 		// action listeners
 		dealAction.addActionListener(this);
@@ -129,6 +116,10 @@ public class AppWindow extends JFrame implements ActionListener, ComponentListen
 		add(gamePanel);
 
 		setVisible(true);
+	}
+
+	public KeyStroke createShortCut(int keyEvent) {
+		return KeyStroke.getKeyStroke(keyEvent, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask());
 	}
 
 	public void actionPerformed(ActionEvent evt) {
@@ -176,19 +167,15 @@ public class AppWindow extends JFrame implements ActionListener, ComponentListen
 		int currentWidth = getWidth();
 		int currentHeight = getHeight();
 
-		boolean resize = false;
-
 		if (currentWidth < WIDTH) {
-			resize = true;
 			currentWidth = WIDTH;
 		}
 
 		if (currentHeight < HEIGHT) {
-			resize = true;
 			currentHeight = HEIGHT;
 		}
 
-		if (resize) {
+		if (currentHeight < HEIGHT || currentHeight < WIDTH) {
 			setSize(currentWidth, currentHeight);
 		}
 	}
