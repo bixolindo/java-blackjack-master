@@ -32,6 +32,6 @@ public class DealerCardHand extends CardHand
             cardAdded = super.add(card);
         }
         
-        return (cardAdded) ? true : false;
+        return cardAdded;
     }
 }

@@ -37,6 +37,6 @@ public class PlayerCardHand extends CardHand
             }
         }
         
-        return (cardAdded) ? true : false;
+        return cardAdded;
     }
 }
