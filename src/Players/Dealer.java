@@ -65,26 +65,22 @@ public class Dealer extends BlackjackPlayer {
 	}
 
 	/**
-     * Acknowledge the bet from the player.
-     *
-     * @param   player  The player placing the bet.
-     * @param   bet     The amount for the bet.
-     */
-    public boolean acceptBetFrom(Player player, double bet)
-    {
-        boolean betSet = player.setBet(bet);
-        
-        if (player.betPlaced())
-        {
-            say("Thank you for your bet of $" + player.getBet() + ". Would you like me to deal?");
-        }
-        else
-        {
-            say("Please place your bet.");
-        }
-        
-        return betSet;
-    }
+	 * Acknowledge the bet from the player.
+	 *
+	 * @param player The player placing the bet.
+	 * @param bet    The amount for the bet.
+	 */
+	public boolean acceptBetFrom(Player player, double bet) {
+		boolean betSet = player.setBet(bet);
+
+		if (player.betPlaced()) {
+			say("Thank you for your bet of $" + player.getBet() + ". Would you like me to deal?");
+		} else {
+			say("Please place your bet.");
+		}
+
+		return betSet;
+	}
 
 	/**
 	 * Deals initial two cards to player and self.
@@ -93,7 +89,7 @@ public class Dealer extends BlackjackPlayer {
 	 *
 	 * @return True if cards were dealt, otherwise false.
 	 */
-	public boolean deal(Player player) {
+	public void deal(Player player) {
 		if (player.betPlaced() && !player.isBankrupt()) {
 			gameOver = false;
 			cardsFaceUp = false;
@@ -117,14 +113,10 @@ public class Dealer extends BlackjackPlayer {
 				say("Blackjack!");
 				go(player);
 			}
-			return false;
-
 		} else if (!player.betPlaced()) {
 			say("Please place your bets.");
 			gameOver = true;
 		}
-
-		return false;
 	}
 
 	/**
