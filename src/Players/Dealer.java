@@ -125,9 +125,14 @@ public class Dealer extends BlackjackPlayer {
 	 * @param player The player requesting another card.
 	 */
 	public void hit(Player player) {
+		Card newCard = deck.deal();
+		player.hand.add(newCard);
+		if(!player.betPlaced()) {
+			deck.returnCard(newCard);
+			say("First place your bet.");
+			return;
+		}
 		say(player.getName() + " hits.");
-		player.hand.add(deck.deal());
-
 		playerCanDouble = false;
 
 		if (player.hand.isBust()) {

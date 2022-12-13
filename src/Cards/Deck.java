@@ -84,4 +84,8 @@ public class Deck extends Stack<Card> {
 
 		return this.pop();
 	}
+	
+	public void returnCard(Card card) {
+		this.push(card);
+	}
 }
