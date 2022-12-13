@@ -96,10 +96,7 @@ public class Player extends BlackjackPlayer implements Serializable {
 	 * @return Whether the bet was valid or not.
 	 */
 	public boolean doubleBet() {
-		if (setBet(getBet() * 2)) {
-			return true;
-		}
-		return false;
+		return setBet(getBet() * 2);
 	}
 
 	// insurance
