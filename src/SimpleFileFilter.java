@@ -20,11 +20,7 @@ public class SimpleFileFilter extends FileFilter {
 	}
 
 	public boolean accept(File file) {
-		if (file != null) {
-			if (file.isDirectory()) {
-				return false;
-			}
-
+		if (file != null && !file.isDirectory()) {
 			String fileName = file.getName();
 			int i = fileName.lastIndexOf('.');
 			if (i > 0 && i < fileName.length() - 1) {

@@ -21,12 +21,11 @@ public class DealerCardHand extends CardHand {
 	 * @return If the card was added or not successfully.
 	 */
 	public boolean add(Card card) {
-		boolean cardAdded = false;
 
 		if (!isBust() && !hasBlackjack()) {
-			cardAdded = super.add(card);
+			return super.add(card);
 		}
 
-		return cardAdded;
+		return false;
 	}
 }
